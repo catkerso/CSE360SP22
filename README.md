@@ -1,2 +1,4 @@
 # CSE360SP22
-CSE 360 repo group for spring 2022
+CSE 360 repo group for spring 2022 
+Team members:
+Cole Atkerson catkerso@asu.edu
