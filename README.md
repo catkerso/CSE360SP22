@@ -4,3 +4,4 @@ Team members: <br/>
 Cole Atkerson catkerso@asu.edu <br/>
 Christopher Kim cwkim3@asu.edu <br/>
 Charles Rogers cwroger2@asu.edu <br/>
+Amit Sinha amsinha@asu.edu <br/>
