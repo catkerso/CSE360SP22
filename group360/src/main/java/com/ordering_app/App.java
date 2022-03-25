@@ -21,8 +21,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
-//        DB.db = new DB("database.json");
-//        Auth.signUp("cwrogiv@gmail.com", "myPassword", "Charles", "Rogers");
         stage.setScene(scene);
         stage.show();
     }
@@ -38,7 +36,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         DB.db = new DB("database.json");
-        System.out.println(Auth.signIn("cwrogiv@gmail.com", "myPassword"));
+        System.out.println(Auth.signIn("cwrogiv@gmail.com", "myPasswords"));
         launch();
     }
 
