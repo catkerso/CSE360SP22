@@ -1,6 +1,9 @@
 package com.Helpers;
 
+import java.util.regex.Pattern;
+
 import com.Models.User;
+import com.ordering_app.App;
 
 import org.json.simple.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
@@ -29,20 +32,19 @@ public class Auth {
     public static User signIn(String email, String pass) {
         if (!doesUserExist(email))
             return null;
-        JSONObject u = (JSONObject) DB.db.getUserAuthObject().get(email);
+        JSONObject u = (JSONObject) App.db.getUserAuthObject().get(email);
         u.get("password");
         if (BCrypt.checkpw(pass, (String) u.get("password"))) {
-            JSONObject user = (JSONObject) DB.db.getUserObject().get(String.valueOf((long) u.get("userID")));
+            JSONObject user = (JSONObject) App.db.getUserObject().get(String.valueOf(u.get("userID")));
             String u_email = (String) user.get("email");
             String fname = (String) user.get("fname");
             String lname = (String) user.get("lname");
+            boolean man = (int) (long) user.get("manager") == 1;
         
-            User r_user = new User();
-            r_user.setEmail(u_email);
-            r_user.setFname(fname);
-            r_user.setLname(lname);
+            User r_user = new User(u_email, fname, lname, man);
             
             isAuthed = true;
+            authedUser = r_user;
             return r_user;
         } 
         return null;
@@ -60,7 +62,7 @@ public class Auth {
         if (doesUserExist(email))
             return false;
         String h_pass = BCrypt.hashpw(pass, BCrypt.gensalt());
-        DB.db.addUser(email, h_pass, fname, lname);
+        App.db.addUser(email, h_pass, fname, lname);
         return false;
     }
 
@@ -70,7 +72,7 @@ public class Auth {
      * @return whether user exists or not
      */
     public static boolean doesUserExist(String email) {
-        return DB.db.getUserAuthObject().get(email) != null;
+        return App.db.getUserAuthObject().get(email) != null;
     }
 
     /** 
@@ -79,6 +81,16 @@ public class Auth {
      */        
     public static User getCurrentUser() {
         return authedUser;
+    }
+
+
+    /**
+     * Checks whether or not a given email adress is formatted as an email or not
+     * @param email input
+     * @return validity of email
+     */
+    public static boolean isValidEmailAddress(String email) {
+        return Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$").matcher(email).matches();
     }
 
 }

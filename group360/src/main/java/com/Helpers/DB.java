@@ -14,7 +14,6 @@ import org.json.simple.parser.ParseException;
 
 
 public class DB {
-    public static DB db;
     private File file;
     private JSONParser parser;
     private JSONObject userObject;
@@ -153,6 +152,8 @@ public class DB {
         user.put("email", email);
         user.put("fname", fname);
         user.put("lname", lname);
+        user.put("manager", index == 0 ? 1 : 0);
+
         userObject.put("" + index, user);
         userObject.put("idCount", index + 1);
         
@@ -161,6 +162,7 @@ public class DB {
         authObject.put("password", password);
         authObject.put("userID", index);
         userAuthObject.put(email, authObject);
+        
 
         writeDB();
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="214" minWidth="200" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ordering_app.SignInController">
+   <children>
+      <AnchorPane id="loginPane" fx:id="loginPane" layoutX="206.0" layoutY="106.0" prefHeight="189.0" prefWidth="188.0">
+         <children>
+            <TextField fx:id="emailInput" layoutX="9.0" layoutY="46.0" promptText="Email" />
+            <PasswordField fx:id="passInput" layoutX="9.0" layoutY="84.0" promptText="Password" />
+            <Button fx:id="signinButton" layoutX="111.0" layoutY="118.0" mnemonicParsing="false" onAction="#onSignin" text="Sign in" />
+            <Button fx:id="signupButton" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#onSignup" text="Sign up" />
+            <Text fill="#2335fc" layoutX="62.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continue as guest">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

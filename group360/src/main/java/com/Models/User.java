@@ -1,9 +1,19 @@
 package com.Models;
 
 public class User {
-    public String email;
-    public String fname; 
-    public String lname;
+    private String email;
+    private String fname; 
+    private String lname;
+    private boolean manager;
+    
+    public User() {}
+
+    public User(String email, String fname, String lname, boolean manager) {
+        this.email = email;
+        this.fname = fname;
+        this.lname = lname;
+        this.manager = manager;
+    }
 
     public String getEmail() {
         return email;
@@ -29,7 +39,14 @@ public class User {
         this.lname = lname;
     }
     
+    public String getFullName() {
+        return fname + " " + lname;
+    }
+    
 
+    public boolean isManager() {
+        return manager;
+    }
 
     public String toString() {
        return "Email: " + email + "\nName:" + fname + " " + lname; 
