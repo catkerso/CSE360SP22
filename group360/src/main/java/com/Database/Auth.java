@@ -40,7 +40,7 @@ public class Auth {
             String u_email = (String) user.get("email");
             String fname = (String) user.get("fname");
             String lname = (String) user.get("lname");
-            boolean man = ((int) (long) user.get("manager")) == 1;
+            boolean man = (int) ((long) user.get("manager")) == 1;
         
             User r_user = new User(Integer.parseInt(uid), u_email, fname, lname, man);
             
