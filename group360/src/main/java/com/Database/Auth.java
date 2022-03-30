@@ -1,9 +1,9 @@
-package com.Helpers;
+package com.Database;
 
 import java.util.regex.Pattern;
 
-import com.Models.User;
-import com.ordering_app.App;
+import com.Objects.User;
+import com.ViewControllers.App;
 
 import org.json.simple.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
@@ -35,13 +35,14 @@ public class Auth {
         JSONObject u = (JSONObject) App.db.getUserAuthObject().get(email);
         u.get("password");
         if (BCrypt.checkpw(pass, (String) u.get("password"))) {
-            JSONObject user = (JSONObject) App.db.getUserObject().get(String.valueOf(u.get("userID")));
+            String uid = String.valueOf(u.get("userID"));
+            JSONObject user = (JSONObject) App.db.getUserObject().get(uid);
             String u_email = (String) user.get("email");
             String fname = (String) user.get("fname");
             String lname = (String) user.get("lname");
-            boolean man = (int) (long) user.get("manager") == 1;
+            boolean man = ((int) (long) user.get("manager")) == 1;
         
-            User r_user = new User(u_email, fname, lname, man);
+            User r_user = new User(Integer.parseInt(uid), u_email, fname, lname, man);
             
             isAuthed = true;
             authedUser = r_user;

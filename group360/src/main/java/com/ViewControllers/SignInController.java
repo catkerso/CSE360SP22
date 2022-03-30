@@ -1,9 +1,9 @@
-package com.ordering_app;
+package com.ViewControllers;
 
 import java.io.IOException;
 
-import com.Helpers.Auth;
-import com.Models.User;
+import com.Database.Auth;
+import com.Objects.User;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
@@ -23,9 +23,6 @@ public class SignInController {
     
     @FXML
     public void initialize() {
-
-        
-       
         mainPane.widthProperty().addListener((s, old, n) -> {
             if(loginPane.getWidth() !=0 ) loginPane.setLayoutX(((Double) n / 2) - (loginPane.getWidth() / 2));
         });

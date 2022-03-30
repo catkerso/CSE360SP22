@@ -1,8 +1,8 @@
-package com.ordering_app;
+package com.ViewControllers;
 
 import java.io.IOException;
 
-import com.Helpers.Auth;
+import com.Database.Auth;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;

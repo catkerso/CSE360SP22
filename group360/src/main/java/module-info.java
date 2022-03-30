@@ -4,6 +4,6 @@ module com.ordering_app {
     requires json.simple;
     requires jbcrypt;
 
-    opens com.ordering_app to javafx.fxml;
-    exports com.ordering_app;
+    opens com.ViewControllers to javafx.fxml;
+    exports com.ViewControllers;
 }

@@ -1,4 +1,4 @@
-package com.ordering_app;
+package com.ViewControllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.Helpers.Auth;
-import com.Helpers.DB;
+import com.Database.Auth;
+import com.Database.DB;
+import com.Objects.Order;
 
 /**
  * JavaFX App
@@ -21,6 +22,8 @@ public class App extends Application {
 
     private static Scene scene;
     public static DB db;
+    public static Order cart;
+
 
     @Override
     public void start(Stage stage) throws IOException {

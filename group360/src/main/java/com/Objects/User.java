@@ -1,8 +1,8 @@
-package cse360project;
+package com.Objects;
 
-public abstract class User {
+public class User {
 	private String email;
-	private boolean isManager;
+	private boolean manager;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
@@ -10,12 +10,14 @@ public abstract class User {
 	private float rewards;
 	private int visitCount;
 	private CreditCard creditCard;
+	private int id;
 	
 	public User() {}
 	
-	public User (String email, String firstName, String lastName, boolean isManager) {
+	public User (int id, String email, String firstName, String lastName, boolean manager) {
+		this.id = id;
 		this.email = email;
-		this.isManager = isManager;
+		this.manager = manager;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = null;
@@ -88,4 +90,13 @@ public abstract class User {
 	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+	public boolean isManager() {
+		return manager;
+	}
+
 }

@@ -1,9 +1,9 @@
-package com.ordering_app;
+package com.ViewControllers;
 
 import java.io.IOException;
 
-import com.Helpers.Auth;
-import com.Models.User;
+import com.Database.Auth;
+import com.Objects.User;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;

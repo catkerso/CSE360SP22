@@ -1,4 +1,4 @@
-package com.Helpers;
+package com.Database;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+
+import com.Objects.MenuItem;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -169,4 +171,28 @@ public class DB {
         return index;
     }
     
+
+
+    protected int addMenuItem(MenuItem item) {
+        int index = (int) (long) menuItemsObject.get("idCount");
+        JSONObject menuItem = new JSONObject();
+        menuItem.put("name", item.getName());
+        menuItem.put("description", item.getDescription());
+        menuItem.put("ingredients", item.getIngredients());
+        menuItem.put("price", item.getPrice());
+        menuItem.put("vegan", item.isVegan());
+        menuItem.put("time", item.getItemTime());
+        
+        menuItemsObject.put("" + index, menuItem);
+        menuItemsObject.put("idCount", index + 1);
+
+        writeDB();
+
+        return index;
+    }
+
+
+
+
+
 }

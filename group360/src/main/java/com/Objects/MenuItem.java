@@ -1,4 +1,4 @@
-package com.Models;
+package com.Objects;
 
 public class MenuItem {
     private int id;
