@@ -40,8 +40,8 @@ public class ManagerHomeController {
 
     @FXML
     private void currentOrdersClicked() throws IOException {
-        App.setRoot("viewOrders");
-
+        App.setRoot("OrderList");
+        return;
     }
     
 }
