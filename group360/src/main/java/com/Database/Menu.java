@@ -36,8 +36,6 @@ public class Menu {
         ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
 
         Set<String> keys = menuObject.keySet();
-        System.out.println(keys.toArray()[0]);
-
 
         for(String key : keys) {
             if(key.equals("idCount")) continue;

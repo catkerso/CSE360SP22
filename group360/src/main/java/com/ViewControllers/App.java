@@ -46,15 +46,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         App.db = new DB("test.json");
-
-        //MenuItem item = new MenuItem(0, "burger", "hamburger", "hamburger", 5.99f, false, 10, "hamburger.jpg");
-        MenuItem item2 = new MenuItem(0, "double burger", "hamburger", "hamburger", 7.99f, false, 12, "hamburger.jpg");
-        
-
-        Menu.editMenuItem(0, item2);
-        System.out.println(Menu.getMenu());
-        
-
         launch();
     }
 
