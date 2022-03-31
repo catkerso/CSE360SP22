@@ -152,7 +152,7 @@ public class DB {
      * @return the id of the user that was added to the database
      */
     protected int addUser(String email, String password, String fname, String lname) {
-        int index = (int) (long) userObject.get("idCount");
+        int index = Integer.parseInt(String.valueOf(userObject.get("idCount")));
         JSONObject user = new JSONObject();
         user.put("email", email);
         user.put("fname", fname);
