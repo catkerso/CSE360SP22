@@ -41,7 +41,7 @@ public class SignInController {
         User user;
         if(Auth.isSignedIn()) {
             user = Auth.getCurrentUser();
-            App.setRoot(user.isManager() ? "managerHome" : "menu");  
+            App.setRoot(user.isManager() ? "managerHome" : "custGuestHome");  
             return;
         }
         if((user = Auth.signIn(email, pass)) != null) {
