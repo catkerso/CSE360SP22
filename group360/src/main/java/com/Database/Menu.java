@@ -21,7 +21,7 @@ public class Menu {
         MenuItem m = new MenuItem();
         m.setName((String) item.get("name"));
         m.setDescription((String) item.get("description"));
-        m.setPrice((float) item.get("price"));
+        m.setPrice(Float.parseFloat(String.valueOf(item.get("price"))));
         m.setId(id);
         m.setVegan(Integer.parseInt(String.valueOf(item.get("vegan"))) == 1);
         return m;

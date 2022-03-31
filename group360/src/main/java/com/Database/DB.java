@@ -204,7 +204,7 @@ public class DB {
     }
 
 	protected void editMenuItem(int id, MenuItem newItem) {
-        JSONObject menuItem = new JSONObject();
+        JSONObject menuItem = (JSONObject) menuItemsObject.get("" + id);
         menuItem.put("name", newItem.getName());
         menuItem.put("description", newItem.getDescription());
         menuItem.put("ingredients", newItem.getIngredients());  
@@ -213,6 +213,7 @@ public class DB {
         menuItem.put("time", newItem.getItemTime());
         menuItem.put("imageURI", newItem.getImageURI());
         menuItemsObject.put("" + id, menuItem);
+        writeDB();
     }
 
 
