@@ -45,6 +45,7 @@ public class DB {
             this.userObject = (JSONObject) o.get("users");
             this.orderObject = (JSONObject) o.get("orders");
             this.userAuthObject = (JSONObject) o.get("userAuth");
+            this.menuItemsObject = (JSONObject) o.get("menuItems");
 
 
 
@@ -174,21 +175,44 @@ public class DB {
 
 
     protected int addMenuItem(MenuItem item) {
-        int index = (int) (long) menuItemsObject.get("idCount");
+        int index = Integer.parseInt(String.valueOf(menuItemsObject.get("idCount")));
+
         JSONObject menuItem = new JSONObject();
         menuItem.put("name", item.getName());
         menuItem.put("description", item.getDescription());
         menuItem.put("ingredients", item.getIngredients());
         menuItem.put("price", item.getPrice());
-        menuItem.put("vegan", item.isVegan());
+        menuItem.put("vegan", item.isVegan() ? 1 : 0);
         menuItem.put("time", item.getItemTime());
-        
+        menuItem.put("imageURI", item.getImageURI());
+
         menuItemsObject.put("" + index, menuItem);
         menuItemsObject.put("idCount", index + 1);
 
         writeDB();
 
         return index;
+    }
+
+
+    /**
+     * Returns the menu item object loaded from the db file
+     * @return menu item object
+     */
+    protected JSONObject getMenuItemsObject() {
+        return menuItemsObject;
+    }
+
+	protected void editMenuItem(int id, MenuItem newItem) {
+        JSONObject menuItem = new JSONObject();
+        menuItem.put("name", newItem.getName());
+        menuItem.put("description", newItem.getDescription());
+        menuItem.put("ingredients", newItem.getIngredients());  
+        menuItem.put("price", newItem.getPrice());
+        menuItem.put("vegan", newItem.isVegan() ? 1 : 0);
+        menuItem.put("time", newItem.getItemTime());
+        menuItem.put("imageURI", newItem.getImageURI());
+        menuItemsObject.put("" + id, menuItem);
     }
 
 

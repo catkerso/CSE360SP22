@@ -38,11 +38,12 @@ public class SignInController {
     private void onSignin() throws IOException {
         String email = emailInput.getText();
         String pass = passInput.getText();
+        User user;
         if(Auth.isSignedIn()) {
-            System.out.println("user is already signed in, move to next page.");
+            user = Auth.getCurrentUser();
+            App.setRoot(user.isManager() ? "managerHome" : "menu");  
             return;
         }
-        User user;
         if((user = Auth.signIn(email, pass)) != null) {
             App.setRoot(user.isManager() ? "managerHome" : "menu");    
             return;

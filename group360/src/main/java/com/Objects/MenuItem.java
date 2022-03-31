@@ -8,6 +8,7 @@ public class MenuItem {
 	private float price;
 	private int time;
 	private boolean vegan;
+    private String imageURI;
 
     /**
      * creates a blank menu item object
@@ -30,8 +31,9 @@ public class MenuItem {
      * @param price
      * @param isVegan
      * @param time
+     * @param imageURI
      */
-    public MenuItem(int id, String name, String desc, String ing, float price, boolean vegan, int time) {
+    public MenuItem(int id, String name, String desc, String ing, float price, boolean vegan, int time, String imageURI) {
         this.id = id;
         this.name = name;
         this.description = desc;
@@ -39,8 +41,41 @@ public class MenuItem {
         this.price = price;
         this.vegan = vegan;
         this.time = time;
+        this.imageURI = imageURI;
     }
     
+
+    /**
+     * gets the time of the menu item
+     * @return time of the menu item
+     */ 
+    public int getTime() {
+        return time;
+    }
+
+    /**
+     * sets the time of the menu item
+     */
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    /**
+     * gets the id of the menu item
+     * @return id of the menu item
+     */
+    public String getImageURI() {
+        return imageURI;
+    }
+
+    /**
+     * sets the image URI of the menu item
+     * @param imageURI
+     */
+    public void setImageURI(String imageURI) {
+        this.imageURI = imageURI;
+    }
+
     /**
      * returns the menu items id
      * @return the menu items id
@@ -146,5 +181,13 @@ public class MenuItem {
      */
     public void setVegan(boolean vegan) {
         this.vegan = vegan;
+    }
+
+    /**
+     * sets the id of the menu item
+     * @param id
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }
