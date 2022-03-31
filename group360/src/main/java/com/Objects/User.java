@@ -20,8 +20,8 @@ public class User {
 		this.manager = manager;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.phoneNumber = null;
-		this.address = null;
+		this.phoneNumber = "";
+		this.address = "";
 		this.rewards = 0;
 		this.visitCount = 0;
 		this.creditCard = null;

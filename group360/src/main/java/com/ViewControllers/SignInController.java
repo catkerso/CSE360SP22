@@ -45,7 +45,7 @@ public class SignInController {
             return;
         }
         if((user = Auth.signIn(email, pass)) != null) {
-            App.setRoot(user.isManager() ? "managerHome" : "menu");    
+            App.setRoot(user.isManager() ? "managerHome" : "custGuestHome");    
             return;
         }
         
@@ -58,6 +58,10 @@ public class SignInController {
 
     }
 
+    @FXML 
+    private void onGuestClicked() throws IOException {
+        App.setRoot("custGuestHome");
+    }
     
 
 }

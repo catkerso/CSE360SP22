@@ -16,7 +16,7 @@
             <PasswordField fx:id="passInput" layoutX="9.0" layoutY="84.0" promptText="Password" />
             <Button fx:id="signinButton" layoutX="111.0" layoutY="118.0" mnemonicParsing="false" onAction="#onSignin" text="Sign in" />
             <Button fx:id="signupButton" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#onSignup" text="Sign up" />
-            <Text fill="#2335fc" layoutX="62.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continue as guest">
+            <Text fill="#2335fc" layoutX="62.0" layoutY="163.0" onMouseClicked="#onGuestClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Continue as guest">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

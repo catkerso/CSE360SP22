@@ -6,8 +6,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
 import com.Objects.MenuItem;
+import com.Objects.Order;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -174,6 +176,11 @@ public class DB {
     
 
 
+    /**
+     * Adds a new menu item to the database and returns the id of the item
+     * @param item - the menu item to add
+     * @return the id of the item that was added to the database
+     */
     protected int addMenuItem(MenuItem item) {
         int index = Integer.parseInt(String.valueOf(menuItemsObject.get("idCount")));
 
@@ -203,6 +210,11 @@ public class DB {
         return menuItemsObject;
     }
 
+    /**
+     * Edits the menu item object loaded from the db file
+     * with the new values at the specified id and 
+     * writes the changes to the db file
+     */
 	protected void editMenuItem(int id, MenuItem newItem) {
         JSONObject menuItem = (JSONObject) menuItemsObject.get("" + id);
         menuItem.put("name", newItem.getName());
@@ -217,6 +229,86 @@ public class DB {
     }
 
 
+    /**
+     * removes the menu item object at the specified id
+     * @param id - the id of the menu item to remove
+     */
+    protected void deleteMenuItem(int id) {
+        menuItemsObject.remove("" + id);
+        writeDB();
+    }
+
+
+    /**
+     * Returns the order object loaded from the db file
+     * @return order object
+     */
+    protected JSONObject getOrderObject() {
+        return orderObject;
+    }
+
+
+    /**
+     * Adds a new order object to the database and returns the id of the order
+     * @param order - the order to add
+     * @return the id of the order that was added to the database
+     */
+    protected int addOrder(Order order) {
+        int index = Integer.parseInt(String.valueOf(orderObject.get("idCount")));
+
+        JSONObject newOrder = new JSONObject();
+        newOrder.put("userID", order.getId());
+        newOrder.put("time", order.getTime());
+        newOrder.put("price", order.getPrice());
+
+        ArrayList<MenuItem> items = order.getItems();
+        JSONArray itemsArray = new JSONArray();
+        //add each item id to the array
+        for (MenuItem item : items) {
+            itemsArray.add(item.getId());
+        }
+        newOrder.put("items", itemsArray);
+
+        orderObject.put("" + index, newOrder);
+        orderObject.put("idCount", index + 1);
+
+        writeDB();
+
+        return index;
+    }   
+
+
+    /**
+     * Edits the order object loaded from the db file
+     * with the new values at the specified id and 
+     * writes the changes to the db file
+     */
+    protected void editOrder(int id, Order newOrder) {
+        JSONObject order = (JSONObject) orderObject.get("" + id);
+        order.put("userID", newOrder.getId());
+        order.put("time", newOrder.getTime());
+        order.put("price", newOrder.getPrice());
+
+        ArrayList<MenuItem> items = newOrder.getItems();
+        JSONArray itemsArray = new JSONArray();
+        //add each item id to the array
+        for (MenuItem item : items) {
+            itemsArray.add(item.getId());
+        }
+        order.put("items", itemsArray);
+        orderObject.put("" + id, order);
+        writeDB();
+    }
+
+
+    /**
+     * removes the order object at the specified id
+     * @param id - the id of the order to remove
+     */
+    protected void deleteOrder(int id) {
+        orderObject.remove("" + id);
+        writeDB();
+    }
 
 
 

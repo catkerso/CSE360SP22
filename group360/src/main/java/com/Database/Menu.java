@@ -81,4 +81,11 @@ public class Menu {
     }
 
     
+    /**
+     * Delete a menu item from the database with the specified id
+     */
+    public static void deleteMenuItem(int id) {
+        App.db.deleteMenuItem(id);
+    }
+
 }

@@ -20,7 +20,9 @@ public class custGuestHomeController {
 
     @FXML 
     public void initialize() {
-        userText.setText("Welcome " + Auth.getCurrentUser().getFirstName()) + "!");
+        userText.setText("Welcome " + 
+        (Auth.isSignedIn() ? Auth.getCurrentUser().getFirstName() : "Guest") + 
+        "!");
         mainPane.widthProperty().addListener((s, old, n) -> {
             if(menuPane.getWidth() !=0 ) menuPane.setLayoutX(((Double) n / 2) - (menuPane.getWidth() / 2));
         });

@@ -80,7 +80,7 @@ public class MenuItem {
      * returns the menu items id
      * @return the menu items id
      */
-    int getID() {
+    public int getId() {
         return id;
     }
     

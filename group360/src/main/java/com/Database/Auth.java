@@ -76,6 +76,16 @@ public class Auth {
         return App.db.getUserAuthObject().get(email) != null;
     }
 
+
+    /**
+     * Returns the user with the given id
+     * @return User object of the user with the id given. Will return null if no user is found.
+     */
+    public static boolean doesUserExist(int id) {
+        return App.db.getUserObject().get(String.valueOf(id)) != null;
+    }
+
+
     /** 
      * Returns the authenticated user for the current client.  will return null if there is no current user signed in.
      * @return current authed user
@@ -92,6 +102,18 @@ public class Auth {
      */
     public static boolean isValidEmailAddress(String email) {
         return Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$").matcher(email).matches();
+    }
+
+
+
+    public static User getUserById(int id) {
+        JSONObject user = (JSONObject) App.db.getUserObject().get(String.valueOf(id));
+        String u_email = (String) user.get("email");
+        String fname = (String) user.get("fname");
+        String lname = (String) user.get("lname");
+        boolean man = Integer.parseInt(String.valueOf(user.get("manager"))) == 1;
+        User u = new User(id, u_email, fname, lname, man);
+        return u;
     }
 
 }

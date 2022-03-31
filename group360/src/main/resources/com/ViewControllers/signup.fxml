@@ -14,15 +14,15 @@
          <children>
             <TextField fx:id="emailInput" layoutX="9.0" layoutY="14.0" promptText="Email" />
             <PasswordField fx:id="passInput" layoutX="9.0" layoutY="50.0" promptText="Password" />
-            <Button fx:id="signinButton" layoutX="14.0" layoutY="157.0" mnemonicParsing="false" onAction="#onSignin" text="Sign in" />
+            <TextField fx:id="fnameInput" layoutX="9.0" layoutY="86.0" promptText="First Name" />
+            <TextField fx:id="lnameInput" layoutX="9.0" layoutY="122.0" promptText="Last Name" />
             <Button fx:id="signupButton" layoutX="113.0" layoutY="157.0" mnemonicParsing="false" onAction="#onSignup" text="Sign up" />
+            <Button fx:id="signinButton" layoutX="14.0" layoutY="157.0" mnemonicParsing="false" onAction="#onSignin" text="Sign in" />
             <Text fill="#2335fc" layoutX="62.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continue as guest">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
-            <TextField fx:id="fnameInput" layoutX="9.0" layoutY="86.0" promptText="First Name" />
-            <TextField fx:id="lnameInput" layoutX="9.0" layoutY="122.0" promptText="Last Name" />
          </children>
       </AnchorPane>
    </children>

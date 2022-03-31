@@ -49,6 +49,12 @@ public class App extends Application {
         launch();
     }
 
+    /**
+     * Creates an error dialog with the provided title and message
+     * and waits for the user to click the OK button
+     * @param title
+     * @param message
+     */
     public static void errorDialog(String title, String message) {
         Dialog<String> d = new Dialog<>();
         d.setTitle(title);

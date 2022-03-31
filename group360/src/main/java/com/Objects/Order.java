@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Order {
 	private ArrayList<MenuItem> items;
+    private int id;
 	private float price;
 	private int time; 
 	private User customer;
@@ -18,11 +19,26 @@ public class Order {
 		items = new ArrayList<MenuItem>();
 	}
     
-    
+    /**
+     * sets the price of the order
+     * @param price
+     */
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    /**
+     * sets the time of the order
+     */
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+
     /**
      * Creates a new order object by the user and with the provided items
-     * @param user
-     * @param items
+     * @param user the user who placed the order
+     * @param items  the items in the order
      */
     public Order(User user, ArrayList<MenuItem> items) {
         this.customer = user;
@@ -47,7 +63,7 @@ public class Order {
     
     /**
      * add a menu item to the order
-     * @param item
+     * @param item to add to the order
      */
 	public void addItem(MenuItem item){
 		items.add(item);
@@ -66,14 +82,15 @@ public class Order {
      * calculates and sets the price of the order
      */
 	private void calculatePrice() {
-		for (int i = 0; i < items.size(); i++){
+		price = 0;
+        for (int i = 0; i < items.size(); i++){
 			price = price + items.get(i).getPrice();
 		}    
 	}
 
     /**
      * get the price of the order
-     * @return
+     * @return price of the order
      */
 	public float getPrice() {
         calculatePrice();
@@ -84,6 +101,7 @@ public class Order {
      * calculates and sets the time it takes to create the order
      */
 	private void calculateTime() {
+        time = 0;
 		for (int i = 0; i < items.size(); i++){
 			time = time + items.get(i).getItemTime();
 		}
@@ -96,5 +114,23 @@ public class Order {
         calculateTime();
 		return time;
 	}
+
+    /**
+     * gets the id of the order
+     * @return id of the order
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * sets the id of the order
+     * @param id of the order
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 }
 
