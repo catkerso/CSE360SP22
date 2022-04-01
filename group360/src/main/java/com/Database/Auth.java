@@ -105,11 +105,7 @@ public class Auth {
     }
 
 
-    /**
-     * Gets a user object from the database by id   
-     * @param id
-     * @return User object of the user with the id given.
-     */
+
     public static User getUserById(int id) {
         JSONObject user = (JSONObject) App.db.getUserObject().get(String.valueOf(id));
         String u_email = (String) user.get("email");
@@ -119,19 +115,5 @@ public class Auth {
         User u = new User(id, u_email, fname, lname, man);
         return u;
     }
-
-
-
-    /**
-     * 
-     * @param id
-     * @param user
-     */
-    public static void editUser(int id, User user) {
-        App.db.editUser(id, user);
-    }
-    
-
-
 
 }

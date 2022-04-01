@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import com.Objects.MenuItem;
 import com.Objects.Order;
-import com.Objects.User;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -174,25 +173,7 @@ public class DB {
 
         return index;
     }
-
-    /**
-     * Edit the user object in the database
-     * @param userID
-     * @param user
-     * @return true if the user was edited, false otherwise
-     */
-    protected boolean editUser(int userID, User user) {
-        if(userObject.containsKey("" + userID)) {
-            JSONObject uObject = (JSONObject) userObject.get("" + userID);
-            uObject.put("fname", user.getFirstName());
-            uObject.put("lname", user.getLastName());
-            uObject.put("manager", user.isManager() ? 1 : 0);
-            userObject.put("" + userID, uObject);
-            writeDB();
-            return true;
-        }
-        return false;
-    }
+    
 
 
     /**
@@ -318,7 +299,6 @@ public class DB {
         orderObject.put("" + id, order);
         writeDB();
     }
-
 
 
     /**

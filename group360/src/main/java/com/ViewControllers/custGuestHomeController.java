@@ -32,13 +32,13 @@ public class custGuestHomeController {
     }
 
     @FXML
-    void currentOrdersClicked(ActionEvent event) {
-
+    void onNewOrder() throws IOException {
+        App.setRoot("menu");
     }
 
     @FXML
-    void viewCustomersClicked(ActionEvent event) {
-
+    void onEditProfile() throws IOException {
+        App.setRoot("customerProfile");
     }
 
 }
