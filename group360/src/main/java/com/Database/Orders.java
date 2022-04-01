@@ -1,6 +1,7 @@
 package com.Database;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import com.Objects.MenuItem;
 import com.Objects.Order;
@@ -12,6 +13,25 @@ import com.ViewControllers.App;
 
 public class Orders {
     
+
+
+    /**
+     * Gets all orders from the database
+     * @return - an arraylist of all orders
+     */
+    public ArrayList<Order> getOrders() {
+        JSONObject orders = App.db.getOrderObject();
+        ArrayList<Order> orderList = new ArrayList<Order>();
+        
+        Set<String> keys = orders.keySet();
+        for(String key : keys) {
+            if(key.equals("idCount")) continue;
+            int id = Integer.parseInt(key);
+            Order o = getOrderById(id);
+            orderList.add(o);
+        }
+        return orderList;
+    }
 
 
 
