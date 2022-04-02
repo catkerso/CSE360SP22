@@ -20,7 +20,7 @@ public class Orders {
      * Gets all orders from the database
      * @return - an arraylist of all orders
      */
-    public ArrayList<Order> getOrders() {
+    public static ArrayList<Order> getOrders() {
         JSONObject orders = App.db.getOrderObject();
         ArrayList<Order> orderList = new ArrayList<Order>();
         
@@ -40,7 +40,7 @@ public class Orders {
      * @param id - the id of the order to get
      * @return the order with the specified id
      */
-    Order getOrderById(int id) {
+    static Order getOrderById(int id) {
         JSONObject orderObject = App.db.getOrderObject();
         JSONObject order = (JSONObject) orderObject.get(String.valueOf(id));
         int userId = Integer.parseInt(String.valueOf(order.get("userId")));
@@ -64,7 +64,7 @@ public class Orders {
      * @param order - the order to add
      * @return the id of the order that was added to the database
      */
-    int addOrder(Order order) {
+    static int addOrder(Order order) {
         return App.db.addOrder(order);
     }
 
@@ -74,7 +74,7 @@ public class Orders {
      * with the new values at the specified id and 
      * writes the changes to the db file
      */
-    void editOrder(int id, Order newOrder) {
+    static void editOrder(int id, Order newOrder) {
         App.db.editOrder(id, newOrder);
     }
 
@@ -82,7 +82,7 @@ public class Orders {
     /**
      * Deletes the order object with the specified id
      */
-    void deleteOrder(int id) {
+    static void deleteOrder(int id) {
         App.db.deleteOrder(id);
     }
 
