@@ -160,6 +160,18 @@ public class DB {
         user.put("lname", lname);
         user.put("manager", index == 0 ? 1 : 0);
 
+        user.put("phone", "");
+        user.put("address", "");
+        user.put("rewards", 0);
+        user.put("visitCount", 0);
+        user.put("cc_fname", "");
+        user.put("cc_lname", "");
+        user.put("cc_number", "");
+        user.put("cc_exp", "");
+        user.put("cc_cvv", "");
+
+        
+        
         userObject.put("" + index, user);
         userObject.put("idCount", index + 1);
         
@@ -169,7 +181,6 @@ public class DB {
         authObject.put("userID", index);
         userAuthObject.put(email, authObject);
         
-
         writeDB();
 
         return index;
@@ -187,6 +198,24 @@ public class DB {
             uObject.put("fname", user.getFirstName());
             uObject.put("lname", user.getLastName());
             uObject.put("manager", user.isManager() ? 1 : 0);
+            uObject.put("address", user.getAddress());
+            uObject.put("phone", user.getPhoneNumber());
+            uObject.put("rewards", user.getRewards());
+            uObject.put("visitCount", user.getVisitCount());
+            if(user.getCreditCard() != null) {
+                uObject.put("cc_fname", user.getCreditCard().getFirstName());
+                uObject.put("cc_lname", user.getCreditCard().getLastName());
+                uObject.put("cc_number", user.getCreditCard().getCardNumber());
+                uObject.put("cc_exp", user.getCreditCard().getExpDate());
+                uObject.put("cc_cvv", user.getCreditCard().getCcv());
+            } else {
+                uObject.put("cc_fname", "");
+                uObject.put("cc_lname", "");
+                uObject.put("cc_number", "");
+                uObject.put("cc_exp", "");
+                uObject.put("cc_cvv", "");
+            }
+
             userObject.put("" + userID, uObject);
             writeDB();
             return true;
