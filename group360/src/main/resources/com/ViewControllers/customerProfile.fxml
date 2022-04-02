@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ViewControllers.CustomerProfileController">
+   <children>
+      <Button fx:id="backButton" layoutX="514.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <VBox fx:id="vBox" layoutX="186.0" layoutY="39.0" prefHeight="349.0" prefWidth="229.0" spacing="20.0">
+         <children>
+            <Text fx:id="userName" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: " wrappingWidth="225.13671875" />
+            <Text fx:id="userEmail" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="225.212890625" />
+            <Text fx:id="userNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number: " wrappingWidth="226.390625" />
+            <Text fx:id="userAddress" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="220.392578125" />
+            <Text fx:id="userRewards" strokeType="OUTSIDE" strokeWidth="0.0" text="Rewards: $" wrappingWidth="222.91796875" />
+            <TextField fx:id="phoneInput" promptText="Phone number">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="addressInput" promptText="Address" />
+            <Button fx:id="updateinfoButton" mnemonicParsing="false" onAction="#updateInfo" text="Update Info">
+               <VBox.margin>
+                  <Insets left="85.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
