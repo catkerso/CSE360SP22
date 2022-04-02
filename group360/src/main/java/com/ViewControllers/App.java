@@ -39,12 +39,6 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    /**
-     * Loads the FXML file and returns the root element
-     * @param fxml
-     * @return root element
-     * @throws IOException
-     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

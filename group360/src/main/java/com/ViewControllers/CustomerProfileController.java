@@ -41,7 +41,7 @@ public class CustomerProfileController {
             return;
         }
 
-        if(!Auth.isValidPhoneNumber(phoneNumber)) {
+        if(!User.isValidPhoneNumber(phoneNumber)) {
             App.errorDialog("Invalid Phone Number", "Please enter a 10-digit phone number");
             return;
         }
@@ -53,7 +53,6 @@ public class CustomerProfileController {
             Auth.getCurrentUser().setAddress(address);
         }
 
-        Auth.editUser(Auth.getCurrentUser().getId(), Auth.getCurrentUser());
         App.errorDialog("Info updated", "Your information has been updated");
         App.setRoot("customerProfile");
     }

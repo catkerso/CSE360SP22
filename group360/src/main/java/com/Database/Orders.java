@@ -15,7 +15,6 @@ public class Orders {
     
 
 
-
     /**
      * Gets all orders from the database
      * @return - an arraylist of all orders
@@ -33,6 +32,7 @@ public class Orders {
         }
         return orderList;
     }
+
 
 
     /**

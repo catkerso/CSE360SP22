@@ -99,8 +99,4 @@ public class User {
 		return manager;
 	}
 
-	public int getId() {
-		return id;
-	}
-
 }
