@@ -1,5 +1,7 @@
 package com.Objects;
 
+import javafx.scene.image.Image;
+
 public class MenuItem {
     private int id;
 	private String name;
@@ -8,19 +10,20 @@ public class MenuItem {
 	private float price;
 	private int time;
 	private boolean vegan;
-    private String imageURI;
+    private String url;
+    private Image image;
 
     /**
      * creates a blank menu item object
      */
 	public MenuItem() {
-        id = Integer.MIN_VALUE;
+        /*id = Integer.MIN_VALUE;
 		name = "";
 		description = "";
 		ingredients = "";
 		price = 0;
 		vegan = false;
-		time = 0;
+		time = 0;*/
 	}
     
     /**
@@ -41,7 +44,8 @@ public class MenuItem {
         this.price = price;
         this.vegan = vegan;
         this.time = time;
-        this.imageURI = imageURI;
+        this.url = imageURI;
+        setImage(imageURI);
     }
     
 
@@ -65,7 +69,7 @@ public class MenuItem {
      * @return id of the menu item
      */
     public String getImageURI() {
-        return imageURI;
+        return url;
     }
 
     /**
@@ -73,7 +77,7 @@ public class MenuItem {
      * @param imageURI
      */
     public void setImageURI(String imageURI) {
-        this.imageURI = imageURI;
+        this.url = imageURI;
     }
 
     /**
@@ -190,4 +194,21 @@ public class MenuItem {
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     * sets the image of the menu item
+     * @param imageURI
+     */
+    public void setImage(String imageURI) {
+        this.image = new Image(imageURI);
+    }
+    
+    /**
+     * gets the image of the menu item
+     * @return Image object 
+     */
+    public Image getImage() {
+        return image;
+    }
+
 }

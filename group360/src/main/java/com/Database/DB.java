@@ -38,6 +38,7 @@ public class DB {
         
         if(!file.exists()) {
             createDatabase();
+            //Menu.populateMenu();    //pre populate five items and never again 
         }
         
         //Parse the json object
@@ -125,7 +126,6 @@ public class DB {
         } catch (IOException e) {
            e.printStackTrace(); 
         }
-        
     }
 
     /**
@@ -329,7 +329,5 @@ public class DB {
         orderObject.remove("" + id);
         writeDB();
     }
-
-
 
 }
