@@ -1,0 +1,5 @@
+.vscode
+.gitignore
+group360/target/*
+group360/database.json
+*.json
