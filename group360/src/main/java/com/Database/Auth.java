@@ -126,6 +126,21 @@ public class Auth {
 
     return users;
     }
+    /**
+     * Returns a list of customers
+     * @return list of of customers
+     */
+    public static ArrayList<User> getCustomers() {
+        ArrayList<User> customers = getUsers();
+        for (int i = 0; i < customers.size(); i++ ){
+            if (customers.get(i).isManager()){
+                customers.remove(i);
+                i--;
+            }
+        }
+        return customers;
+    }
+
 
 
     /**

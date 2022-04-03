@@ -23,17 +23,19 @@ public class Order {
      * sets the price of the order
      * @param price
      */
+    
     public void setPrice(float price) {
         this.price = price;
     }
-
+    
     /**
      * sets the time of the order
      */
+    
     public void setTime(int time) {
         this.time = time;
     }
-
+    
 
     /**
      * Creates a new order object by the user and with the provided items
@@ -130,7 +132,9 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
-
+    public String toString(){
+        return customer.toString();
+    }
 
 }
 

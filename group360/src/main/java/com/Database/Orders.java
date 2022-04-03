@@ -41,9 +41,12 @@ public class Orders {
      * @return the order with the specified id
      */
     static Order getOrderById(int id) {
+        System.out.println("getorder.ID: " + id);
         JSONObject orderObject = App.db.getOrderObject();
         JSONObject order = (JSONObject) orderObject.get(String.valueOf(id));
-        int userId = Integer.parseInt(String.valueOf(order.get("userId")));
+        System.out.println("Order: " + order.toString());
+        System.out.println("USerId: " + String.valueOf(order.get("userID")));
+        int userId = Integer.parseInt(String.valueOf(order.get("userID")));
 
         JSONArray itemsArray = (JSONArray) order.get("items");
         ArrayList<MenuItem> items = new ArrayList<MenuItem>();
@@ -64,7 +67,7 @@ public class Orders {
      * @param order - the order to add
      * @return the id of the order that was added to the database
      */
-    static int addOrder(Order order) {
+    public static int addOrder(Order order) {
         return App.db.addOrder(order);
     }
 

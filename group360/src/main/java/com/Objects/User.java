@@ -102,5 +102,10 @@ public class User {
 	public int getId() {
 		return id;
 	}
+	public String toString(){
+		String s1 = getFullName() + "\n" + getAddress() +"\n" + 
+		getPhoneNumber() + "\n" + getEmail() + "\n";
+		return s1;
+	}
 
 }

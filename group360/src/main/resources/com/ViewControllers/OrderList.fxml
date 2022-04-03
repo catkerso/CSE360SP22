@@ -3,11 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 
 <VBox prefHeight="398.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ViewControllers.OrderListController">
    <children>
@@ -19,14 +16,6 @@
             <Insets top="5.0" />
          </VBox.margin>
       </HBox>
-      <SplitPane VBox.vgrow="ALWAYS">
-         <items>
-            <ScrollPane prefHeight="398.0" prefWidth="300.0">
-               <content>
-                  <ListView prefHeight="403.0" prefWidth="265.0" />
-               </content>
-            </ScrollPane>
-         </items>
-      </SplitPane>
+      <ListView fx:id="listView" prefHeight="368.0" prefWidth="548.0" />
    </children>
 </VBox>

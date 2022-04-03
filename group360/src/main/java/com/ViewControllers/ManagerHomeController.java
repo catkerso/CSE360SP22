@@ -29,7 +29,7 @@ public class ManagerHomeController {
 
     @FXML
     private void viewCustomersClicked() throws IOException {
-        App.setRoot("viewCustomers");
+        App.setRoot("UserList");
     }
 
     @FXML
@@ -41,7 +41,6 @@ public class ManagerHomeController {
     @FXML
     private void currentOrdersClicked() throws IOException {
         App.setRoot("OrderList");
-        return;
     }
     
 }
