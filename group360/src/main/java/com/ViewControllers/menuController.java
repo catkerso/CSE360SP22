@@ -6,6 +6,8 @@ import com.Database.Menu;
 import com.Objects.MenuItem;
 import java.io.*;
 import java.util.*;
+import com.Objects.Order;
+import com.ViewControllers.App;
 
 import javafx.beans.Observable;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -169,11 +171,14 @@ public class menuController {
     @FXML private Button byPriceButton;
     @FXML private Button byVeganButton;
 
+    //Cart Setup - not sure about guest user handling for orders
+    //cart = new Order(Auth.isAuthed() ? Auth.getCurrentUser : null);
+
     boolean gotMenu = false;
     ArrayList<MenuItem> menu = new ArrayList<MenuItem>(10);
+    public static Order cart = new Order(Auth.isSignedIn() ? Auth.getCurrentUser() : null);
     String strPrice;
     String strVegan;
-
     public void initialize() {
 
         if (gotMenu == false) {
@@ -240,7 +245,12 @@ public class menuController {
 
     @FXML
     private void onCart() throws IOException {
+        if(cart.getItems().size() == 0){
+            App.errorDialog("Empty Cart", "Please add an item to your cart before proceeding.");
+        }
+        else{
         App.setRoot("cart");
+        }
     }
 
     @FXML
@@ -290,28 +300,30 @@ public class menuController {
 
     @FXML
     private void onAddItemZero() throws IOException {
-        //cart.add(menu.get(0))
+        cart.addItem(menu.get(0));
     }
 
     @FXML
     private void onAddItemOne() throws IOException {
-        //cart.add(menu.get(1))
+        cart.addItem(menu.get(1));
     }
 
     @FXML
     private void onAddItemTwo() throws IOException {
-        //cart.add(menu.get(2))
+        cart.addItem(menu.get(2));
     }
 
     @FXML
     private void onAddItemThree() throws IOException {
-        //cart.add(menu.get(3))
+        cart.addItem(menu.get(3));
     }
 
     @FXML
     private void onAddItemFour() throws IOException {
-        //cart.add(menu.get(4))
+        cart.addItem(menu.get(4));
     }
 
-    
+    public static Order grabCart() {
+        return cart;
+   }
 }

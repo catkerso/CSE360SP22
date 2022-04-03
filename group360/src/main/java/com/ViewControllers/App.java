@@ -1,5 +1,4 @@
 package com.ViewControllers;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +23,7 @@ public class App extends Application {
 
     private static Scene scene;
     public static DB db;
-    public static Order cart;
+    //public static Order cart;
 
 
     @Override
@@ -69,6 +68,10 @@ public class App extends Application {
         d.getDialogPane().getButtonTypes().add(btn);
         d.showAndWait();
 
+        
     }
+
+
+
 
 }
