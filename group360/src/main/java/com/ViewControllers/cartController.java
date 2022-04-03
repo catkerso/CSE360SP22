@@ -133,14 +133,16 @@ public class cartController {
             orderSize = orderItems.size();
         }
 
-//   causes a NULL Pointer exception if all instances of the item are removed, this should just prevent the Hbox from generating
-// but instead it causes an error. Don't understand it.
+// causes a NULL Pointer exception if all instances of the item are removed, this should just prevent the Hbox from generating
+// but instead it causes an error. Don't understand it. This same problem exists throghout, and is commented out in the other
+// items
         
-// Hbox 1
+// Hbox 1 - all of the items follow the same pattern of code, functionally all identical
         if(uniqueItems.size() == 0){
             itemOneHBox.setManaged(false);
         }
 
+// action watchers for quantity buttons
         else {
             itemOneQMinus.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -148,6 +150,7 @@ public class cartController {
                     for (int i=0; i<orderSize; i++){
                         if(orderItems.get(i) == uniqueItems.get(0)){
                             orderItems.remove(i);
+// here is where the handling probably needs to be for a check for removing index from uniqueItems if last instance of that order item has been removed
                             break;
                         }
                     }
@@ -163,18 +166,21 @@ public class cartController {
             });
             
             itemOneNameText.setText(uniqueItems.get(0).getName());
+// count instances of same order item
             itemOneCount = 0; 
             for (int i=0; i<orderSize; i++){
                 if(orderItems.get(i) == uniqueItems.get(0)){
                     itemOneCount++;
                 }
             }
+// this might not be useful or necessary
             if (itemOneCount == 0){
                 itemOneHBox.setVisible(false);
             }
             itemOneQText.setText(String.valueOf(itemOneCount));
             float itemOneTotal = itemOneCount * uniqueItems.get(0).getPrice();
             itemOnePText.setText(String.valueOf(itemOneTotal));
+// subtotal for that item
             subtotal = itemOneCount * uniqueItems.get(0).getPrice();
         }
 
