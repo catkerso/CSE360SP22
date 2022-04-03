@@ -87,27 +87,4 @@ public class Menu {
     public static void deleteMenuItem(int id) {
         App.db.deleteMenuItem(id);
     }
-
-
-    /**
-     * Pre-populates five menu items
-     */
-    public static void populateMenu() {
-        MenuItem item1 = new MenuItem(1, "Burger", "A delicious, grass-fed angus burger.", "Bun, beef, lettuce, and tomatoes.", (float)15.99, false, 14, "https://operahousekc.com/wp-content/uploads/2021/04/burgers.jpg");
-        App.db.addMenuItem(item1);
-
-        MenuItem item2 = new MenuItem(2, "Steak", "Grade A, angus rib-eye steak.", "Steak, salt, pepper.", (float)39.97, false, 20, "https://cdn.shopify.com/s/files/1/2233/6197/products/32304_-_32312_C_-_Elk_Ribeye_Steak-1_grande.jpg?v=1589575861");
-        App.db.addMenuItem(item2);
-        
-        MenuItem item3 = new MenuItem(3, "Fries", "Golden french fries made fresh.", "Potatoes, Ketchup, salt.", (float)6.79, true, 6, "https://sherwoodfoods.com/wp-content/uploads/2015/02/600x400-SFD-french-fries.jpg");
-        App.db.addMenuItem(item3);
-        
-        MenuItem item4 = new MenuItem(4, "Quinoa Bowl", "Made healthy and organic with local ingredients.", "Quinoa, Brussels Sprouts, Tomatoes, House Dressing.", (float)14.89, true, 10, "https://thecozyapron.com/wp-content/uploads/2012/03/quinoa-salad_thecozyapron_1.jpg");
-        App.db.addMenuItem(item4);
-        
-        MenuItem item5 = new MenuItem(5, "Salad", "Refreshing and energizing garden salad.", "Spinach, Avocado, Peppers, Sweet Potatoes, House Dressing", (float)12.98, true, 8, "https://irenamacri.com/wp-content/uploads/2020/09/rainbow-salad-power-bowl-1-600x400.jpg");
-        App.db.addMenuItem(item5);
-
-    }
-
 }

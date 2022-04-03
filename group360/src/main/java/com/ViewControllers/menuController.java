@@ -162,8 +162,12 @@ public class menuController {
     @FXML
     private Button itemFourButton;
 
-    // Back Button
-    private Button backButton;
+    // Buttons
+    @FXML private Button backButton;
+    @FXML private Button cartButton;
+    @FXML private Button byNameButton;
+    @FXML private Button byPriceButton;
+    @FXML private Button byVeganButton;
 
     boolean gotMenu = false;
     ArrayList<MenuItem> menu = new ArrayList<MenuItem>(10);
@@ -173,13 +177,10 @@ public class menuController {
     public void initialize() {
 
         if (gotMenu == false) {
-
             menu = Menu.getMenu();
             gotMenu = true;
         }
         
-        Menu.populateMenu();
-
         itemZeroImageView.setImage(menu.get(0).getImage());
         itemZeroNameText.setText(menu.get(0).getName());
         itemZeroDescText.setText(menu.get(0).getDescription());
@@ -237,4 +238,80 @@ public class menuController {
         App.setRoot("custGuestHome");
     }
 
+    @FXML
+    private void onCart() throws IOException {
+        App.setRoot("cart");
+    }
+
+    @FXML
+    private void onByName() throws IOException {
+        int i, j;
+        for (i = 1; i < 5; i++) {
+            MenuItem tmp = menu.get(i);
+            j = i;
+            while ((j > 0) && (menu.get(j - 1).getName().compareTo(tmp.getName()) > 0)) {
+                menu.set(j, menu.get(j - 1));
+                j--;
+            }
+            menu.set(j, tmp);
+        }
+        initialize();
+    }
+
+    @FXML
+    private void onByPrice() throws IOException {
+        int i, j;
+        for (i = 1; i < 5; i++) {
+            MenuItem tmp = menu.get(i);
+            j = i;
+            while ((j > 0) && (menu.get(j - 1).getPrice() > tmp.getPrice())) {
+                menu.set(j, menu.get(j - 1));
+                j--;
+            }
+            menu.set(j, tmp);
+        }
+        initialize();
+    }
+
+    @FXML
+    private void onByVegan() throws IOException {
+        int i, j;
+        for (i = 1; i < 5; i++) {
+            MenuItem tmp = menu.get(i);
+            j = i;
+            while ((j > 0) && (menu.get(j - 1).isVegan() != tmp.isVegan())) {
+                menu.set(j, menu.get(j - 1));
+                j--;
+            }
+            menu.set(j, tmp);
+        }
+        initialize();
+    }
+
+    @FXML
+    private void onAddItemZero() throws IOException {
+        //cart.add(menu.get(0))
+    }
+
+    @FXML
+    private void onAddItemOne() throws IOException {
+        //cart.add(menu.get(1))
+    }
+
+    @FXML
+    private void onAddItemTwo() throws IOException {
+        //cart.add(menu.get(2))
+    }
+
+    @FXML
+    private void onAddItemThree() throws IOException {
+        //cart.add(menu.get(3))
+    }
+
+    @FXML
+    private void onAddItemFour() throws IOException {
+        //cart.add(menu.get(4))
+    }
+
+    
 }

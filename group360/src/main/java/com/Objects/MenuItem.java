@@ -17,13 +17,7 @@ public class MenuItem {
      * creates a blank menu item object
      */
 	public MenuItem() {
-        /*id = Integer.MIN_VALUE;
-		name = "";
-		description = "";
-		ingredients = "";
-		price = 0;
-		vegan = false;
-		time = 0;*/
+    
 	}
     
     /**
