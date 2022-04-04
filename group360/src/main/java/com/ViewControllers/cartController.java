@@ -115,6 +115,7 @@ public class cartController {
 
     Order cart = menuController.grabCart();
     ArrayList<MenuItem> orderItems = cart.getItems();
+    
     HashSet<MenuItem> uniqueFinder = new HashSet<MenuItem>(orderItems);
     ArrayList<MenuItem> uniqueItems = new ArrayList<MenuItem>(uniqueFinder);
     float subtotal = 0;
@@ -182,10 +183,7 @@ public class cartController {
                     itemOneCount++;
                 }
             }
-// this might not be useful or necessary
-            if (itemOneCount == 0){
-                itemOneHBox.setVisible(false);
-            }
+
             itemOneQText.setText(String.valueOf(itemOneCount));
             float itemOneTotal = itemOneCount * uniqueItems.get(0).getPrice();
             itemOnePText.setText(String.valueOf(itemOneTotal));
@@ -218,6 +216,7 @@ public class cartController {
                             break;
                         }
                     }
+
                     initialize();
                 }
             });
@@ -235,9 +234,6 @@ public class cartController {
                 if(orderItems.get(i) == uniqueItems.get(1)){
                     itemTwoCount++;
                 }
-            }
-            if (itemTwoCount == 0){
-                itemTwoHBox.setVisible(false);
             }
             itemTwoQText.setText(String.valueOf(itemTwoCount));
             float itemTwoTotal = itemTwoCount * uniqueItems.get(1).getPrice();
@@ -288,9 +284,6 @@ public class cartController {
                     itemThreeCount++;
                 }
             }
-            if (itemThreeCount == 0){
-                itemThreeHBox.setVisible(false);
-            }
             itemThreeQText.setText(String.valueOf(itemThreeCount));
             float itemThreeTotal = itemThreeCount * uniqueItems.get(2).getPrice();
             itemThreePText.setText(String.valueOf(itemThreeTotal));
@@ -339,9 +332,6 @@ public class cartController {
                     itemFourCount++;
                 }
             }
-            if (itemFourCount == 0){
-                itemFourHBox.setVisible(false);
-            }
             itemFourQText.setText(String.valueOf(itemFourCount));
             float itemFourTotal = itemFourCount * uniqueItems.get(3).getPrice();
             itemFourPText.setText(String.valueOf(itemFourTotal));
@@ -388,9 +378,6 @@ public class cartController {
                 if(orderItems.get(i) == uniqueItems.get(4)){
                     itemFiveCount++;
                 }
-            }
-            if (itemFiveCount == 0){
-                itemFiveHBox.setVisible(false);
             }
             itemFiveQText.setText(String.valueOf(itemFiveCount));
             float itemFiveTotal = itemFiveCount * uniqueItems.get(4).getPrice();
