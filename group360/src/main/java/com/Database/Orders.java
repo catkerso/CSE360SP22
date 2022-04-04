@@ -41,11 +41,8 @@ public class Orders {
      * @return the order with the specified id
      */
     static Order getOrderById(int id) {
-        System.out.println("getorder.ID: " + id);
         JSONObject orderObject = App.db.getOrderObject();
         JSONObject order = (JSONObject) orderObject.get(String.valueOf(id));
-        System.out.println("Order: " + order.toString());
-        System.out.println("USerId: " + String.valueOf(order.get("userID")));
         int userId = Integer.parseInt(String.valueOf(order.get("userID")));
 
         JSONArray itemsArray = (JSONArray) order.get("items");

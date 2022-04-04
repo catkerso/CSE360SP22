@@ -323,7 +323,7 @@ public class DB {
         int index = Integer.parseInt(String.valueOf(orderObject.get("idCount")));
 
         JSONObject newOrder = new JSONObject();
-        newOrder.put("userID", order.getId());
+        newOrder.put("userID", order.getCustomer() == null ? Integer.MIN_VALUE : order.getCustomer().getId());
         newOrder.put("time", order.getTime());
         newOrder.put("price", order.getPrice());
 

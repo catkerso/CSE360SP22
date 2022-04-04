@@ -22,10 +22,10 @@ public class orderConfirmedController {
         int i = 0;
         int totTime = 0;
         for(Order order : Orders.getOrders()) { // check for matching order and track iteration
+            totTime = totTime + order.getTime();
             if(order.getId() == id) {
               break;
             }
-            totTime = totTime + order.getTime();
             i++;
         }
         totTime = totTime + menuController.cart.getTime();

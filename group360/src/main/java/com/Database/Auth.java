@@ -17,8 +17,7 @@ public class Auth {
     private static User authedUser = null;
 
 
-
-
+    
     /**
      * Returns whether the client is authed or not
      * 
