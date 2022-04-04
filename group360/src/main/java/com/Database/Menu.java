@@ -24,6 +24,7 @@ public class Menu {
         m.setPrice(Float.parseFloat(String.valueOf(item.get("price"))));
         m.setId(id);
         m.setVegan(Integer.parseInt(String.valueOf(item.get("vegan"))) == 1);
+        m.setTime(Integer.parseInt(String.valueOf(item.get("time"))));
         return m;
     }
 

@@ -28,9 +28,25 @@ public class orderConfirmedController {
             }
             i++;
         }
+
         queue.setText(i + " people ahead of you"); // print messages in text fields
-        time.setText(totTime + " minutes until order ready");
+        time.setText(minutesToTime(totTime) + " until order ready");
     }
+
+
+    //minutes to time string
+    private String minutesToTime(int minutes) {
+        int hours = minutes / 60;
+        int mins = minutes % 60;
+
+        //print hours and minutes but only hours if hours
+        if(hours == 0) {
+            return mins + " minutes";
+        } else {
+            return hours + " hours and " + mins + " minutes";
+        }
+    }
+
 
     @FXML
     private void onCancel() throws IOException {

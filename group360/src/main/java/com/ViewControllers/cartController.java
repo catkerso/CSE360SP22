@@ -187,6 +187,11 @@ public class cartController {
                 }
             }
 
+            if(itemOneCount == 0) {
+                uniqueItems.remove(0);
+                initialize();
+            }
+
             itemOneQText.setText(String.valueOf(itemOneCount));
             float itemOneTotal = itemOneCount * Menu.getMenuItem(uniqueItems.get(0)).getPrice();
             itemOnePText.setText(String.valueOf(itemOneTotal));
@@ -216,6 +221,7 @@ public class cartController {
                     for (int i=0; i<orderSize; i++){
                         if(orderItems.get(i).getId() == uniqueItems.get(1)){
                             orderItems.remove(i);
+                            
                             break;
                         }
                     }
@@ -238,6 +244,14 @@ public class cartController {
                     itemTwoCount++;
                 }
             }
+
+
+            if(itemTwoCount == 0) {
+                uniqueItems.remove(1);
+                initialize();
+                return;
+            }
+
             itemTwoQText.setText(String.valueOf(itemTwoCount));
             float itemTwoTotal = itemTwoCount * Menu.getMenuItem(uniqueItems.get(1)).getPrice();
             itemTwoPText.setText(String.valueOf(itemTwoTotal));
@@ -287,6 +301,10 @@ public class cartController {
                     itemThreeCount++;
                 }
             }
+            if(itemThreeCount == 0) {
+                uniqueItems.remove(2);
+                initialize();
+            }
             itemThreeQText.setText(String.valueOf(itemThreeCount));
             float itemThreeTotal = itemThreeCount * Menu.getMenuItem(uniqueItems.get(2)).getPrice();
             itemThreePText.setText(String.valueOf(itemThreeTotal));
@@ -335,6 +353,10 @@ public class cartController {
                     itemFourCount++;
                 }
             }
+            if(itemFourCount == 0) {
+                uniqueItems.remove(3);
+                initialize();
+            }
             itemFourQText.setText(String.valueOf(itemFourCount));
             float itemFourTotal = itemFourCount * Menu.getMenuItem(uniqueItems.get(3)).getPrice();
             itemFourPText.setText(String.valueOf(itemFourTotal));
@@ -370,22 +392,26 @@ public class cartController {
             itemFiveQPlus.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    cart.addItem(Menu.getMenuItem(uniqueItems.get(3)));;
+                    cart.addItem(Menu.getMenuItem(uniqueItems.get(4)));;
                     initialize();
                 }
             });
             
-            itemFiveNameText.setText(Menu.getMenuItem(uniqueItems.get(3)).getName());
+            itemFiveNameText.setText(Menu.getMenuItem(uniqueItems.get(4)).getName());
             itemFiveCount = 0; 
             for (int i=0; i<orderSize; i++){
                 if(orderItems.get(i).getId() == uniqueItems.get(4)){
                     itemFiveCount++;
                 }
             }
+            if(itemFiveCount == 0) {
+                uniqueItems.remove(4);
+                initialize();
+            }
             itemFiveQText.setText(String.valueOf(itemFiveCount));
-            float itemFiveTotal = itemFiveCount * Menu.getMenuItem(uniqueItems.get(3)).getPrice();
+            float itemFiveTotal = itemFiveCount * Menu.getMenuItem(uniqueItems.get(4)).getPrice();
             itemFivePText.setText(String.valueOf(itemFiveTotal));
-            subtotal = subtotal + itemFiveCount * Menu.getMenuItem(uniqueItems.get(3)).getPrice();
+            subtotal = subtotal + itemFiveCount * Menu.getMenuItem(uniqueItems.get(4)).getPrice();
         }
 
 
