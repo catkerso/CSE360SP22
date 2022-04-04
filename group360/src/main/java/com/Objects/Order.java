@@ -130,7 +130,11 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
-
+    public String toString() {
+        String orderOut = "Order #: " + getId() + "\tPrice: " + getPrice() + "\tTime: " + getTime() + "\n" +
+                             "Items: " + "\n" + getItems() + "n" + customer.toString();
+        return orderOut;
+    }
 
 }
 
