@@ -16,6 +16,18 @@ public class Auth {
     private static boolean isAuthed = false;
     private static User authedUser = null;
 
+
+
+    public static void custTest() {
+        isAuthed = true;
+        authedUser = getUserById(1);
+    }
+
+    public static void manTest() {
+        isAuthed = true;
+        authedUser = getUserById(0);
+    }
+
     /**
      * Returns whether the client is authed or not
      * 
