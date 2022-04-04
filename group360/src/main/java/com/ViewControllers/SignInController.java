@@ -23,6 +23,7 @@ public class SignInController {
     
     @FXML
     public void initialize() {
+        
         mainPane.widthProperty().addListener((s, old, n) -> {
             if(loginPane.getWidth() !=0 ) loginPane.setLayoutX(((Double) n / 2) - (loginPane.getWidth() / 2));
         });
