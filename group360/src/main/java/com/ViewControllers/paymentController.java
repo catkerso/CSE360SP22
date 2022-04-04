@@ -23,17 +23,21 @@ public class paymentController {
 
     @FXML
     public void initialize() {
+        if (Auth.getCurrentUser() != null) {
         fName.setText(Auth.getCurrentUser().getFirstName());
         lName.setText(Auth.getCurrentUser().getLastName());
-        cardNumber.setText(Auth.getCurrentUser().getCreditCard().getCardNumber());
-        expDate.setText(Auth.getCurrentUser().getCreditCard().getExpDate());
-        ccv.setText(Auth.getCurrentUser().getCreditCard().getCcv());
+        if (Auth.getCurrentUser().getCreditCard() != null) {
+            cardNumber.setText(Auth.getCurrentUser().getCreditCard().getCardNumber());
+            expDate.setText(Auth.getCurrentUser().getCreditCard().getExpDate());
+            ccv.setText(Auth.getCurrentUser().getCreditCard().getCcv());
+        }
         address.setText(Auth.getCurrentUser().getAddress());
         phoneNumber.setText(Auth.getCurrentUser().getPhoneNumber());
+        }
     }
 
     @FXML
-    private void onPayment() throws IOException {
+    private void onPlaceOrder() throws IOException {
         String fNameInput = fName.getText();
         String lNameInput = lName.getText();
         String cardInput = cardNumber.getText();

@@ -77,7 +77,7 @@ public class Orders {
      * with the new values at the specified id and 
      * writes the changes to the db file
      */
-    static void editOrder(int id, Order newOrder) {
+    public static void editOrder(int id, Order newOrder) {
         App.db.editOrder(id, newOrder);
     }
 
@@ -85,7 +85,7 @@ public class Orders {
     /**
      * Deletes the order object with the specified id
      */
-    static void deleteOrder(int id) {
+    public static void deleteOrder(int id) {
         App.db.deleteOrder(id);
     }
 
