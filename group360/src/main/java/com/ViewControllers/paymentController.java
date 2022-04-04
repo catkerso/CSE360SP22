@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.Database.Auth;
 import com.Objects.User;
+import com.Database.Orders;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +23,7 @@ public class paymentController {
     @FXML private Button placeOrder;
 
     @FXML
-    public void initialize() {
+    public void initialize() { // initialize all fields with info from customer profile if it exists
         if (Auth.getCurrentUser() != null) {
         fName.setText(Auth.getCurrentUser().getFirstName());
         lName.setText(Auth.getCurrentUser().getLastName());
@@ -46,12 +47,15 @@ public class paymentController {
         String addressInput = address.getText();
         String phoneInput = phoneNumber.getText();
 
-        if (fNameInput.length() == 0 || lNameInput.length() == 0 || 
+        if (fNameInput.length() == 0 || lNameInput.length() == 0 || // check if all fields have inputs
         cardInput.length() == 0 || expInput.length() == 0 || ccvInput.length() == 0 ||
         addressInput.length() == 0 || phoneInput.length() == 0) {
-            App.errorDialog("Fields not populated", "Some input field is empty.");
+            App.errorDialog("Fields not populated", "Some input field is empty."); // if not print error message
             return;
         }
+
+        int id = Orders.addOrder(menuController.cart); // add order in cart to order list
+        menuController.cart.setId(id); // save id to cart object 
         App.setRoot("orderConfirmed");
     }
 }
