@@ -1,5 +1,6 @@
 package com.ViewControllers;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import com.ViewControllers.menuController;
 import com.Objects.MenuItem;
@@ -14,8 +15,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import com.Database.Auth;
-import java.io.IOException;
+import com.Database.Menu;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -115,9 +118,9 @@ public class cartController {
 
     Order cart = menuController.grabCart();
     ArrayList<MenuItem> orderItems = cart.getItems();
-    
-    HashSet<MenuItem> uniqueFinder = new HashSet<MenuItem>(orderItems);
-    ArrayList<MenuItem> uniqueItems = new ArrayList<MenuItem>(uniqueFinder);
+    //HashSet<MenuItem> uniqueFinder = new HashSet<MenuItem>(orderItems);
+    HashSet<Integer> uniqueFinder = genUniqueFinder();
+    ArrayList<Integer> uniqueItems = new ArrayList<Integer>(uniqueFinder);
     float subtotal = 0;
     int orderSize = 0;
     int itemOneCount = 0;
@@ -158,7 +161,7 @@ public class cartController {
                 @Override
                 public void handle(ActionEvent event){
                     for (int i=0; i<orderSize; i++){
-                        if(orderItems.get(i) == uniqueItems.get(0)){
+                        if(orderItems.get(i).getId() == uniqueItems.get(0)){
                             orderItems.remove(i);
 // here is where the handling probably needs to be for a check for removing index from uniqueItems if last instance of that order item has been removed
                             break;
@@ -170,25 +173,25 @@ public class cartController {
             itemOneQPlus.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    cart.addItem(uniqueItems.get(0));;
+                    cart.addItem(Menu.getMenuItem(uniqueItems.get(0)));;
                     initialize();
                 }
             });
             
-            itemOneNameText.setText(uniqueItems.get(0).getName());
+            itemOneNameText.setText(Menu.getMenuItem(uniqueItems.get(0)).getName());
 // count instances of same order item
             itemOneCount = 0; 
             for (int i=0; i<orderSize; i++){
-                if(orderItems.get(i) == uniqueItems.get(0)){
+                if(orderItems.get(i).getId() == uniqueItems.get(0)){
                     itemOneCount++;
                 }
             }
 
             itemOneQText.setText(String.valueOf(itemOneCount));
-            float itemOneTotal = itemOneCount * uniqueItems.get(0).getPrice();
+            float itemOneTotal = itemOneCount * Menu.getMenuItem(uniqueItems.get(0)).getPrice();
             itemOnePText.setText(String.valueOf(itemOneTotal));
 // subtotal for that item
-            subtotal = itemOneCount * uniqueItems.get(0).getPrice();
+            subtotal = itemOneCount * Menu.getMenuItem(uniqueItems.get(0)).getPrice();
         }
 
 
@@ -211,7 +214,7 @@ public class cartController {
                 @Override
                 public void handle(ActionEvent event){
                     for (int i=0; i<orderSize; i++){
-                        if(orderItems.get(i) == uniqueItems.get(1)){
+                        if(orderItems.get(i).getId() == uniqueItems.get(1)){
                             orderItems.remove(i);
                             break;
                         }
@@ -223,22 +226,22 @@ public class cartController {
             itemTwoQPlus.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    cart.addItem(uniqueItems.get(1));;
+                    cart.addItem(Menu.getMenuItem(uniqueItems.get(1)));;
                     initialize();
                 }
             });
             
-            itemTwoNameText.setText(uniqueItems.get(1).getName());
+            itemTwoNameText.setText(Menu.getMenuItem(uniqueItems.get(1)).getName());
             itemTwoCount = 0; 
             for (int i=0; i<orderSize; i++){
-                if(orderItems.get(i) == uniqueItems.get(1)){
+                if(orderItems.get(i).getId() == uniqueItems.get(1)){
                     itemTwoCount++;
                 }
             }
             itemTwoQText.setText(String.valueOf(itemTwoCount));
-            float itemTwoTotal = itemTwoCount * uniqueItems.get(1).getPrice();
+            float itemTwoTotal = itemTwoCount * Menu.getMenuItem(uniqueItems.get(1)).getPrice();
             itemTwoPText.setText(String.valueOf(itemTwoTotal));
-            subtotal = subtotal + itemTwoCount * uniqueItems.get(1).getPrice();
+            subtotal = subtotal + itemTwoCount * Menu.getMenuItem(uniqueItems.get(1)).getPrice();
         }
 
 
@@ -261,7 +264,7 @@ public class cartController {
                 @Override
                 public void handle(ActionEvent event){
                     for (int i=0; i<orderSize; i++){
-                        if(orderItems.get(i) == uniqueItems.get(2)){
+                        if(orderItems.get(i).getId() == uniqueItems.get(2)){
                             orderItems.remove(i);
                             break;
                         }
@@ -272,22 +275,22 @@ public class cartController {
             itemThreeQPlus.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    cart.addItem(uniqueItems.get(2));;
+                    cart.addItem(Menu.getMenuItem(uniqueItems.get(2)));;
                     initialize();
                 }
             });
             
-            itemThreeNameText.setText(uniqueItems.get(2).getName());
+            itemThreeNameText.setText(Menu.getMenuItem(uniqueItems.get(2)).getName());
             itemThreeCount = 0; 
             for (int i=0; i<orderSize; i++){
-                if(orderItems.get(i) == uniqueItems.get(2)){
+                if(orderItems.get(i).getId() == uniqueItems.get(2)){
                     itemThreeCount++;
                 }
             }
             itemThreeQText.setText(String.valueOf(itemThreeCount));
-            float itemThreeTotal = itemThreeCount * uniqueItems.get(2).getPrice();
+            float itemThreeTotal = itemThreeCount * Menu.getMenuItem(uniqueItems.get(2)).getPrice();
             itemThreePText.setText(String.valueOf(itemThreeTotal));
-            subtotal = subtotal + itemThreeCount * uniqueItems.get(2).getPrice();
+            subtotal = subtotal + itemThreeCount * Menu.getMenuItem(uniqueItems.get(2)).getPrice();
         }
 
                 // Hbox 4
@@ -309,7 +312,7 @@ public class cartController {
                 @Override
                 public void handle(ActionEvent event){
                     for (int i=0; i<orderSize; i++){
-                        if(orderItems.get(i) == uniqueItems.get(3)){
+                        if(orderItems.get(i).getId() == uniqueItems.get(3)){
                             orderItems.remove(i);
                             break;
                         }
@@ -320,22 +323,22 @@ public class cartController {
             itemFourQPlus.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    cart.addItem(uniqueItems.get(3));;
+                    cart.addItem(Menu.getMenuItem(uniqueItems.get(3)));;
                     initialize();
                 }
             });
             
-            itemFourNameText.setText(uniqueItems.get(3).getName());
+            itemFourNameText.setText(Menu.getMenuItem(uniqueItems.get(3)).getName());
             itemFourCount = 0; 
             for (int i=0; i<orderSize; i++){
-                if(orderItems.get(i) == uniqueItems.get(3)){
+                if(orderItems.get(i).getId() == uniqueItems.get(3)){
                     itemFourCount++;
                 }
             }
             itemFourQText.setText(String.valueOf(itemFourCount));
-            float itemFourTotal = itemFourCount * uniqueItems.get(3).getPrice();
+            float itemFourTotal = itemFourCount * Menu.getMenuItem(uniqueItems.get(3)).getPrice();
             itemFourPText.setText(String.valueOf(itemFourTotal));
-            subtotal = subtotal + itemFourCount * uniqueItems.get(3).getPrice();
+            subtotal = subtotal + itemFourCount * Menu.getMenuItem(uniqueItems.get(3)).getPrice();
         }
 
                 // Hbox 5
@@ -356,7 +359,7 @@ public class cartController {
                 @Override
                 public void handle(ActionEvent event){
                     for (int i=0; i<orderSize; i++){
-                        if(orderItems.get(i) == uniqueItems.get(4)){
+                        if(orderItems.get(i).getId() == uniqueItems.get(4)){
                             orderItems.remove(i);
                             break;
                         }
@@ -367,22 +370,22 @@ public class cartController {
             itemFiveQPlus.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event){
-                    cart.addItem(uniqueItems.get(4));;
+                    cart.addItem(Menu.getMenuItem(uniqueItems.get(3)));;
                     initialize();
                 }
             });
             
-            itemFiveNameText.setText(uniqueItems.get(4).getName());
+            itemFiveNameText.setText(Menu.getMenuItem(uniqueItems.get(3)).getName());
             itemFiveCount = 0; 
             for (int i=0; i<orderSize; i++){
-                if(orderItems.get(i) == uniqueItems.get(4)){
+                if(orderItems.get(i).getId() == uniqueItems.get(4)){
                     itemFiveCount++;
                 }
             }
             itemFiveQText.setText(String.valueOf(itemFiveCount));
-            float itemFiveTotal = itemFiveCount * uniqueItems.get(4).getPrice();
+            float itemFiveTotal = itemFiveCount * Menu.getMenuItem(uniqueItems.get(3)).getPrice();
             itemFivePText.setText(String.valueOf(itemFiveTotal));
-            subtotal = subtotal + itemFiveCount * uniqueItems.get(4).getPrice();
+            subtotal = subtotal + itemFiveCount * Menu.getMenuItem(uniqueItems.get(3)).getPrice();
         }
 
 
@@ -401,6 +404,14 @@ public class cartController {
         App.setRoot("Payment");
     }
 
+    private HashSet genUniqueFinder() {
+        ArrayList<Integer> itemIDs = new ArrayList<Integer>();
+        for(int i = 0; i<orderItems.size(); i++){
+            itemIDs.add(orderItems.get(i).getId());
+        }
+        HashSet<Integer> uniqueIDs = new HashSet<Integer>(itemIDs);
+        return uniqueIDs;
+    }
 
    
 }
