@@ -28,7 +28,6 @@ public class orderConfirmedController {
             }
             i++;
         }
-        totTime = totTime + menuController.cart.getTime();
         queue.setText(i + " people ahead of you"); // print messages in text fields
         time.setText(totTime + " minutes until order ready");
     }

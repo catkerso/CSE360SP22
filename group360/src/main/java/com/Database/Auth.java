@@ -24,8 +24,15 @@ public class Auth {
      * @return authentication status
      */
     public static boolean isSignedIn() {
-
         return isAuthed;
+    }
+
+    /**
+     * Signs out 
+     */
+    public static void signOut() {
+        isAuthed = false;
+        authedUser = null;
     }
 
     /**

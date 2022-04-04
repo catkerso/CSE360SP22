@@ -2,6 +2,7 @@ package com.ViewControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -17,6 +18,10 @@ public class custGuestHomeController {
     private AnchorPane menuPane;
     @FXML
     private Text userText;
+    @FXML
+    private Button editButton;
+    @FXML
+    private Button signout;
 
     @FXML 
     public void initialize() {
@@ -29,6 +34,11 @@ public class custGuestHomeController {
          mainPane.heightProperty().addListener((s, old, n) -> {
             if(menuPane.getWidth() !=0 ) menuPane.setLayoutY(((Double) n / 2) - (menuPane.getHeight() / 2));
         });
+
+        if(!Auth.isSignedIn()) {
+            editButton.setVisible(false);
+            signout.setText("Sign In");
+        }
     }
 
     @FXML
@@ -39,6 +49,13 @@ public class custGuestHomeController {
     @FXML
     private void onEditProfile() throws IOException {
         App.setRoot("customerProfile");
+    }
+
+
+    @FXML
+    private void onSignout() throws IOException {
+        if(Auth.isSignedIn()) Auth.signOut();
+        App.setRoot("signin");
     }
 
 }
