@@ -41,6 +41,11 @@ public class DB {
         }
         
         //Parse the json object
+        loadDB();
+    }
+    
+
+    private void loadDB() {
         try {
             FileReader reader = new FileReader(file);
             JSONObject o = (JSONObject) parser.parse(reader);
@@ -64,7 +69,7 @@ public class DB {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Writes the currently stored object to the databse
      */
@@ -132,6 +137,7 @@ public class DB {
      * @return users object
      */
     protected JSONObject getUserObject() {
+        loadDB();
         return userObject;
     }
 
@@ -140,6 +146,7 @@ public class DB {
      * @return auth object
      */
     protected JSONObject getUserAuthObject() {
+        loadDB();
         return userAuthObject;
     }
     
@@ -152,6 +159,7 @@ public class DB {
      * @return the id of the user that was added to the database
      */
     protected int addUser(String email, String password, String fname, String lname) {
+        loadDB();
         int index = Integer.parseInt(String.valueOf(userObject.get("idCount")));
         JSONObject user = new JSONObject();
         user.put("email", email);
@@ -196,6 +204,7 @@ public class DB {
      * @return true if the user was edited, false otherwise
      */
     protected boolean editUser(int userID, User user) {
+        loadDB();
         if(userObject.containsKey("" + userID)) {
             JSONObject uObject = (JSONObject) userObject.get("" + userID);
             uObject.put("fname", user.getFirstName());
@@ -233,6 +242,7 @@ public class DB {
      * @return the id of the item that was added to the database
      */
     protected int addMenuItem(MenuItem item) {
+        loadDB();
         int index = Integer.parseInt(String.valueOf(menuItemsObject.get("idCount")));
 
         JSONObject menuItem = new JSONObject();
@@ -258,6 +268,7 @@ public class DB {
      * @return menu item object
      */
     protected JSONObject getMenuItemsObject() {
+        loadDB();
         return menuItemsObject;
     }
 
@@ -267,6 +278,7 @@ public class DB {
      * writes the changes to the db file
      */
 	protected void editMenuItem(int id, MenuItem newItem) {
+        loadDB();
         JSONObject menuItem = (JSONObject) menuItemsObject.get("" + id);
         menuItem.put("name", newItem.getName());
         menuItem.put("description", newItem.getDescription());
@@ -285,6 +297,7 @@ public class DB {
      * @param id - the id of the menu item to remove
      */
     protected void deleteMenuItem(int id) {
+        loadDB();
         menuItemsObject.remove("" + id);
         writeDB();
     }
@@ -295,6 +308,7 @@ public class DB {
      * @return order object
      */
     protected JSONObject getOrderObject() {
+        loadDB();
         return orderObject;
     }
 
@@ -305,6 +319,7 @@ public class DB {
      * @return the id of the order that was added to the database
      */
     protected int addOrder(Order order) {
+        loadDB();
         int index = Integer.parseInt(String.valueOf(orderObject.get("idCount")));
 
         JSONObject newOrder = new JSONObject();
@@ -335,6 +350,7 @@ public class DB {
      * writes the changes to the db file
      */
     protected void editOrder(int id, Order newOrder) {
+        loadDB();
         JSONObject order = (JSONObject) orderObject.get("" + id);
         order.put("userID", newOrder.getId());
         order.put("time", newOrder.getTime());
@@ -358,6 +374,7 @@ public class DB {
      * @param id - the id of the order to remove
      */
     protected void deleteOrder(int id) {
+        loadDB();
         orderObject.remove("" + id);
         writeDB();
     }

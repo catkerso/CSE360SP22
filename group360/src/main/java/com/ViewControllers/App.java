@@ -28,7 +28,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("managerHome"), 600, 400);
+        scene = new Scene(loadFXML("signin"), 600, 400);
         stage.setScene(scene);
         stage.getScene().getRoot().prefHeight(400);
         stage.show();
@@ -51,8 +51,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         App.db = new DB("test.json");
-        Auth.manTest();
-        //Auth.custTest();
         launch();
     }
 
