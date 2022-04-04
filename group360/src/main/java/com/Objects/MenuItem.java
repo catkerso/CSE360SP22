@@ -147,6 +147,8 @@ public class MenuItem {
      */
 	public void setPrice(float price) {
 		this.price = price;
+        //limit to 2 decimal places
+        this.price = (float) (Math.round(price * 100.0) / 100.0);
 	}
 
     /**
@@ -205,4 +207,25 @@ public class MenuItem {
         return image;
     }
 
+    //to string
+    @Override
+    public String toString() {
+        //make price string with 2 decimals
+        String priceString = String.format("%.2f", price);
+        return name + ", $" + priceString + ", " + time + " minutes";
+    }
+
+    //prints the menu item
+    public void print() {
+        System.out.println("Menu Item{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", ingredients='" + ingredients + '\'' +
+            ", price=" + price +
+            ", time=" + time +
+            ", vegan=" + vegan +
+            ", url='" + url + '\'' +
+            '}');
+    }
 }
