@@ -39,7 +39,7 @@ public class cartController {
     private Button menu;
 
     @FXML
-    Text subToTFloatText;
+    Text subTotFloatText;
     @FXML
     Text emptyCart;
 
@@ -139,7 +139,16 @@ public class cartController {
         
 // Hbox 1 - all of the items follow the same pattern of code, functionally all identical
         if(uniqueItems.size() == 0){
-            itemOneHBox.setManaged(false);
+            itemOneNameText.setVisible(false);
+            itemOneNameText.managedProperty().bind(itemOneNameText.visibleProperty());
+            itemOneQText.setVisible(false);
+            itemOneQText.managedProperty().bind(itemOneQText.visibleProperty());
+            itemOnePText.setVisible(false);
+            itemOnePText.managedProperty().bind(itemOnePText.visibleProperty());
+            itemOneQMinus.setVisible(false);
+            itemOneQMinus.managedProperty().bind(itemOneQMinus.visibleProperty());
+            itemOneQPlus.setVisible(false);
+            itemOneQPlus.managedProperty().bind(itemOneQPlus.visibleProperty());
         }
 
 // action watchers for quantity buttons
@@ -186,13 +195,18 @@ public class cartController {
 
 
         // Hbox 2
-        /*
-        if(uniqueItems.size() < 2){
-            itemOneHBox.setManaged(false);
-        }
-        */
-        if (uniqueItems.size() < 2){
 
+        if (uniqueItems.size() < 2){
+            itemTwoNameText.setVisible(false);
+            itemTwoNameText.managedProperty().bind(itemTwoNameText.visibleProperty());
+            itemTwoQText.setVisible(false);
+            itemTwoQText.managedProperty().bind(itemTwoQText.visibleProperty());
+            itemTwoPText.setVisible(false);
+            itemTwoPText.managedProperty().bind(itemTwoPText.visibleProperty());
+            itemTwoQMinus.setVisible(false);
+            itemTwoQMinus.managedProperty().bind(itemTwoQMinus.visibleProperty());
+            itemTwoQPlus.setVisible(false);
+            itemTwoQPlus.managedProperty().bind(itemTwoQPlus.visibleProperty());
         }
         else {
             itemTwoQMinus.setOnAction(new EventHandler<ActionEvent>() {
@@ -233,13 +247,18 @@ public class cartController {
 
 
         // Hbox 3
-        /*
-        if(uniqueItems.size() < 2){
-            itemOneHBox.setManaged(false);
-        }
-        */
+
         if (uniqueItems.size() < 3){
-            
+            itemThreeNameText.setVisible(false);
+            itemThreeNameText.managedProperty().bind(itemThreeNameText.visibleProperty());
+            itemThreeQText.setVisible(false);
+            itemThreeQText.managedProperty().bind(itemThreeQText.visibleProperty());
+            itemThreePText.setVisible(false);
+            itemThreePText.managedProperty().bind(itemThreePText.visibleProperty());
+            itemThreeQMinus.setVisible(false);
+            itemThreeQMinus.managedProperty().bind(itemThreeQMinus.visibleProperty());
+            itemThreeQPlus.setVisible(false);
+            itemThreeQPlus.managedProperty().bind(itemThreeQPlus.visibleProperty());
         }
         else {
             itemThreeQMinus.setOnAction(new EventHandler<ActionEvent>() {
@@ -278,14 +297,19 @@ public class cartController {
             subtotal = subtotal + itemThreeCount * uniqueItems.get(2).getPrice();
         }
 
-                // Hbox 3
-        /*
-        if(uniqueItems.size() < 2){
-            itemOneHBox.setManaged(false);
-        }
-        */
+                // Hbox 4
+
         if (uniqueItems.size() < 4){
-            
+            itemFourNameText.setVisible(false);
+            itemFourNameText.managedProperty().bind(itemFourNameText.visibleProperty());
+            itemFourQText.setVisible(false);
+            itemFourQText.managedProperty().bind(itemFourQText.visibleProperty());
+            itemFourPText.setVisible(false);
+            itemFourPText.managedProperty().bind(itemFourPText.visibleProperty());
+            itemFourQMinus.setVisible(false);
+            itemFourQMinus.managedProperty().bind(itemFourQMinus.visibleProperty());
+            itemFourQPlus.setVisible(false);
+            itemFourQPlus.managedProperty().bind(itemFourQPlus.visibleProperty());
         }
         else {
             itemFourQMinus.setOnAction(new EventHandler<ActionEvent>() {
@@ -324,14 +348,18 @@ public class cartController {
             subtotal = subtotal + itemFourCount * uniqueItems.get(3).getPrice();
         }
 
-                // Hbox 4
-        /*
-        if(uniqueItems.size() < 4){
-            itemOneHBox.setManaged(false);
-        }
-        */
+                // Hbox 5
         if (uniqueItems.size() < 5){
-            
+            itemFiveNameText.setVisible(false);
+            itemFiveNameText.managedProperty().bind(itemFiveNameText.visibleProperty());
+            itemFiveQText.setVisible(false);
+            itemFiveQText.managedProperty().bind(itemFiveQText.visibleProperty());
+            itemFivePText.setVisible(false);
+            itemFivePText.managedProperty().bind(itemFivePText.visibleProperty());
+            itemFiveQMinus.setVisible(false);
+            itemFiveQMinus.managedProperty().bind(itemFiveQMinus.visibleProperty());
+            itemFiveQPlus.setVisible(false);
+            itemFiveQPlus.managedProperty().bind(itemFiveQPlus.visibleProperty());
         }
         else {
             itemFiveQMinus.setOnAction(new EventHandler<ActionEvent>() {
@@ -374,7 +402,7 @@ public class cartController {
 
 
     // another null pointer exception I don't understand...
-  //      subToTFloatText.setText("$" + String.valueOf(subtotal));
+       subTotFloatText.setText("$" + String.valueOf(subtotal));
     }
 
     @FXML
