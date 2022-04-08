@@ -54,7 +54,16 @@ public class paymentController {
             return;
         }
 
+        //TODO: check for rewards points and apply them to the order
+
+        float rewards = menuController.cart.getPrice() * 0.1f;
+        if (Auth.isSignedIn()) {
+            Auth.getCurrentUser().setRewards(Auth.getCurrentUser().getRewards() + rewards);
+            Auth.editUser(Auth.getCurrentUser().getId(), Auth.getCurrentUser());
+        }
+
         int id = Orders.addOrder(menuController.cart); // add order in cart to order list
+
         menuController.cart.setId(id); // save id to cart object 
         App.setRoot("orderConfirmed");
     }
