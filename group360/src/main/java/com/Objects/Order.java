@@ -68,6 +68,20 @@ public class Order {
 	public void addItem(MenuItem item){
 		items.add(item);
 	}
+
+    /**
+     * removes a menu item from the order
+     * @param item to remove from the order
+     */
+    public boolean removeItem(MenuItem item) {
+        for(MenuItem i : items) {
+            if(i.getId() == item.getId()) {
+                items.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
     
    
     /**
