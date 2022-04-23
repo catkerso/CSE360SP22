@@ -43,4 +43,9 @@ public class ManagerHomeController {
         App.setRoot("OrderList");
     }
     
+    @FXML
+    private void onSignout() throws IOException {
+        if(Auth.isSignedIn()) Auth.signOut();
+        App.setRoot("signin");
+    }
 }

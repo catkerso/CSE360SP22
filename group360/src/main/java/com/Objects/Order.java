@@ -145,8 +145,8 @@ public class Order {
         this.id = id;
     }
     public String toString() {
-        String orderOut = "Order #: " + getId() + "\tPrice: " + getPrice() + "\tTime: " + getTime() + "\n" +
-                             "Items: " + "\n" + getItems() + "n" + customer.toString();
+        String orderOut = "Order #: " + (getId()+1) + "\tPrice: " + getPrice() + "\tTime: " + getTime() + "\n" +
+                             "Items: " + "\n" + getItems() + "\n" + "User Info: " + "\n" +customer.toString();
         return orderOut;
     }
 
